@@ -236,9 +236,6 @@ document.querySelectorAll("input").forEach(input => {
 });
 async function sendForm() {
 
-    const TOKEN = "ВСТА8774634069:AAFB05GvTfJxX-DtaKJOpscmxsAb3nSFv0U";
-    const CHAT_ID = "679280367";
-
     const data = {
         name: document.getElementById("name").value,
         surname: document.getElementById("surname").value,
@@ -248,29 +245,13 @@ async function sendForm() {
         sleep: sleepValue
     };
 
-    const message = `
- Новая анкета:
-
-Имя: ${data.name}
-Фамилия: ${data.surname}
-
-С парой: ${data.withPartner ? "Да" : "Нет"}
-
-Партнёр: ${data.partnerName} ${data.partnerSurname}
-
-Ночёвка: ${data.sleep}
-`;
-
     try {
-        const res = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+        const res = await fetch("https://ТВОЙ-SERVER/send", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                chat_id: CHAT_ID,
-                text: message
-            })
+            body: JSON.stringify(data)
         });
 
         const result = await res.json();
@@ -278,7 +259,7 @@ async function sendForm() {
         if (result.ok) {
             quiz.innerHTML = `
                 <div class="step active">
-                    <h2>Спасибо! Анкета отправлена </h2>
+                    <h2>Спасибо! Анкета отправлена</h2>
                     <button onclick="closeQuiz()">Вернуться</button>
                 </div>
             `;

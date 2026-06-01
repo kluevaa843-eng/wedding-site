@@ -34,7 +34,7 @@ ${data.withPartner ? `
             text: message
         });
 
-        console.log("📩 отправлено в Telegram");
+        console.log(" отправлено в Telegram");
         res.json({ ok: true });
 
     } catch (err) {
