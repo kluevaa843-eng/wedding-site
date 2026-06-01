@@ -1,19 +1,27 @@
+document.addEventListener("DOMContentLoaded", () => {
 
-const intro = document.getElementById("intro");
-const openBtn = document.getElementById("openBtn");
+    const intro = document.getElementById("intro");
+    const openBtn = document.getElementById("openBtn");
 
-const sectionsOpen = document.querySelectorAll(".section");
+    const sectionsOpen = document.querySelectorAll(".section");
 
-// блокируем скролл при загрузке
-document.body.classList.add("lock");
+    document.body.classList.add("lock");
 
-openBtn.addEventListener("click", () => {
-    intro.classList.add("hide");
-    document.body.classList.remove("lock");
-    if (sectionsOpen.length > 0) {
-        sectionsOpen[0].classList.add("show");
+    if (openBtn) {
+        openBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            intro.classList.add("hide");
+            document.body.classList.remove("lock");
+
+            if (sectionsOpen.length > 0) {
+                sectionsOpen[0].classList.add("show");
+            }
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
+
 });
 // 1. Появление секций
 const sections = document.querySelectorAll(".section");
