@@ -1,0 +1,1410 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+     /* outline: 1px solid red; */
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    font-family:'Montserrat', sans-serif;
+    background: #580117;
+    padding: 20px;
+}
+
+body.lock {
+    overflow: hidden;
+    height: 100vh;
+}
+.intro {
+    position: fixed;
+    inset: 0;
+    background: #580117;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* скрытие */
+.intro.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.open-btn {
+    position: relative;
+    padding: 14px 28px;
+    border: 1px solid #e9c38a;
+    background: transparent;
+    color: #e9c38a;
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 2px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+
+.open-btn:hover {
+    background: #e9c38a;
+    color: #580117;
+    transform: scale(1.05);
+}
+
+/*МЕРЦАНИЕ */
+ .open-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+    transform: skewX(-20deg);
+    animation: shine 2.5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -150%;
+    }
+    50% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
+} 
+.section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+    will-change: opacity, transform;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.hero{
+    position:relative;
+    z-index: 1;
+    width:100%;
+    height: 90vh;
+    overflow:hidden;
+}
+.main-card{
+    width:100%;
+    max-width:520px;
+    margin:20px auto;
+    border:2px solid rgb(212, 186, 196);
+    background:#580117;
+    overflow:visible;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.hero-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.3);
+}
+.hero-content{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:flex-end;
+    text-align:right;
+    color:#e9c38a;
+    padding:50px 25px;
+}
+
+.hero-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.love-text,
+.wedding,
+.happy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+    padding: 0 18px;
+
+    font-size: 16px;
+    letter-spacing: 2px;
+
+    border-radius: 50px;
+
+    color: #e9c38a;
+
+    white-space: nowrap;
+}
+
+.wedding {
+    border: 1px solid rgba(233,195,138,0.5);
+    backdrop-filter: blur(4px);
+}
+
+.hero-subtitle{
+    font-size:25px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+h1{
+    font-family:'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 40px;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero-date{
+    font-size:22px;
+    margin-bottom:20px;
+    letter-spacing: 2px;
+}
+.hero-center{
+    margin-bottom:220px;
+}
+.hero-bottom {
+    width: 100%;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+  margin-bottom: 120px;
+}
+.today {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    margin-right: 200px;
+    letter-spacing: 3px;
+}
+.forever {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+.love-section {
+    width: 100%;
+    padding: 30px 20px 80px;
+    background: rgb(212, 186, 196);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+    
+}
+
+.love-container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.love-left {
+    position: relative;
+    text-align: center;
+    margin-top: -100px;
+}
+
+.love-left h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 200;
+    line-height: 1;
+    color: #580117;
+    font-size: clamp(180px, 65vw, 320px);
+    letter-spacing: -6px;
+    transform: scaleY(1.25);
+}
+
+.love-ve {
+    margin-top: 10px;
+}
+
+.timer {
+    width: 100%;
+    max-width: 420px;
+    padding: 25px 18px;
+    border-radius: 30px;
+    border: 1px solid #580117;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    text-align: center;
+}
+.days-box {
+    margin-bottom: 20px;
+}
+
+.days-box span {
+    display: block;
+
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(60px, 10vw, 100px);
+
+    color: #580117;
+    line-height: 1;
+}
+
+.days-box p {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #580117;
+}
+.time-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.time-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.time-item span {
+    display: block;
+
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(20px, 5vw, 34px);
+
+    color: #580117;
+    margin-bottom: 6px;
+}
+
+.time-item p {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #580117;
+}
+.love-section,
+.invite {
+    margin-top: -1px;
+}
+.invite {
+    width: 100%;
+    padding: 60px 0;
+    background: rgb(212, 186, 196);
+    text-align: center;
+    color: #580117;
+}
+.invite-text  {
+    padding: 0 20px;
+    font-family: 'Special Elite', monospace;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-shadow: 0.3px 0 0 currentColor;
+}
+.invite-main {
+    font-size: 20px;
+    line-height: 1.8;
+    letter-spacing: 3px;
+    text-align:  left;
+}
+.invite-big {
+    font-size: 30px;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    font-weight: 500;
+    
+}
+.invite-date {
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-align: right;
+}
+.invite-image {
+    width: 100%;
+    max-width: 100%;
+    margin: 40px 0;
+    display: block;
+    object-fit: cover;
+}
+.timing-title {
+    font-family: 'Special Elite', monospace;
+    font-size: 40px;
+    letter-spacing: 3px;
+    text-align: right;
+    width: auto;
+    margin-left: 20px;
+    padding-right: 20px;
+    transform: scaleY(1.25);
+}
+.timing-content {
+    text-align: left;
+    flex: 1;
+    padding-left: 20px;
+}
+.time-item {
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.timing-item p {
+    font-size: 20px;
+    line-height: 1.4;
+    font-family: 'Special Elite', monospace;
+    text-shadow: 0.3px 0 0 currentColor;
+}
+.location {
+    width: 100%;
+    padding: 60px 20px;
+    background: #580117;
+    color: #e9c38a;
+}
+.location-label {
+    text-align: right;
+    font-family: 'Special Elite', monospace;
+    font-size: 40px;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    transform: scaleY(1.25);
+}
+.location-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(80px, 14vw, 160px);
+    line-height: 0.85;
+    letter-spacing: -5px;
+    transform: scaleY(1.3);
+    margin-bottom: 30px;
+}
+.location-info {
+    text-align: left;
+    padding: 0 10px;
+    margin-bottom: 30px;
+}
+
+.place-name {
+    font-size: 28px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.place-address {
+    font-family: 'Special Elite', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+}
+.location-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 30px 0;
+    object-fit: cover;
+}
+.map-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    border: 1px solid #e9c38a;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #e9c38a;
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* hover эффект */
+.map-button:hover {
+    background: #e9c38a;
+    color: #580117;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(233, 195, 138, 0.25);
+}
+
+/* пульс */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(233, 195, 138, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 18px rgba(233, 195, 138, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(233, 195, 138, 0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+
+
+
+
+.dress {
+    background: rgb(212, 186, 196) ;
+    color: #580117;
+    padding: 70px 20px;
+}
+.dress-title {
+    text-align: right;
+    font-family: 'Special Elite', monospace;
+    font-size: 40px;
+    letter-spacing: 3px;
+    transform: scaleY(1.2);
+    margin-bottom: 25px;
+    padding-top: 100px;
+    padding-right: 25px;
+
+}
+.dress-text {
+    text-align: left;
+    font-family: 'Special Elite', monospace;
+    font-size: 20px;
+    line-height: 1.8;
+    letter-spacing: 3px;
+    text-shadow: 0.3px 0 0 currentColor;
+    padding:0 20px ;
+    
+}
+.dress-img {
+    width: 100%;
+    display: block;
+    margin: 20px 0 60px;
+    object-fit: cover;
+}
+
+
+ .details {
+    position: relative;
+    margin-top: -40px; /* налезает на фото */
+    z-index: 2;
+}
+.details-letter {
+    position: relative;
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(300px, 95vw, 600px);
+    color: #580117;
+    line-height: 0.8;
+    text-align: center;
+    transform: scaleY(1.2);
+    
+}
+.details-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 38px;
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 3px;
+}
+.wedding-block {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+.wedding-bg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Libre Baskerville', serif;
+    color: #580117;
+    line-height: 0.85;
+    letter-spacing: -4px;
+    transform: scaleY(1.2);
+    
+}
+
+.wedding-bg span {
+    font-size: clamp(90px, 26vw, 180px);
+}
+
+.wedding-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    width: 60%;
+    max-width: 220px;
+    object-fit: cover;
+    z-index: 2;
+}
+.guests {
+    background: #580117;
+    color: #e9c38a;
+    padding: 60px 20px;
+    padding-bottom: 0;
+
+
+}
+.guest-title {
+    text-align: right;
+    font-family: 'Special Elite', monospace;
+    font-size: 40px;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    transform: scaleY(1.25);
+    padding-top: 50px;
+    padding-right: 15px;
+}
+.guest-text {
+    text-align: left;
+    font-family: 'Special Elite', monospace;
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: 3px;
+    text-shadow: 0.3px 0 0 currentColor;
+    padding:0 20px ;
+    margin-bottom: 25px;
+}
+.guest-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    border: 1px solid #e9c38a;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #e9c38a;
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 25px;
+    
+    
+}
+.guest-button:hover {
+    background: #e9c38a;
+    color: #580117;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(233, 195, 138, 0.25);
+}
+
+.guest-photo-wrap {
+    position: relative;
+    margin-top: 30px;
+    
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.guest-photo {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+.guest-photo-text {
+    position: absolute;
+    left: 70%;
+    top: 15%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #e9c38a;
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(22px, 6vw, 40px);
+    line-height: 1;
+    letter-spacing: -1px;
+    text-shadow: 0 5px 25px rgba(0,0,0,.5);
+}
+
+@media (max-width: 768px) {
+    .main-card {
+        max-width: 420px;   
+        margin: 0 auto;
+    }
+    .hero-content {
+        padding: 30px 18px;
+    }
+
+    .hero-center {
+        margin-bottom: 120px;
+    }
+
+    h1 {
+        font-size: 32px;
+        line-height: 1.15;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .hero-date {
+        font-size: 18px;
+    }
+
+    .today {
+        font-size: 38px;
+        margin-right: 120px;
+    }
+
+    .hero-bottom {
+        margin-bottom: 80px;
+    }
+
+    .hero-tags {
+        gap: 8px;
+    }
+
+    .wedding,
+    .happy {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .love-section {
+        padding: 50px 15px 70px;
+
+    }
+    .love-left {
+        transform-origin: center;
+        margin-top: -70px;
+    }
+
+    .love-container {
+        gap: 50px;
+    }
+
+    .love-left h2 {
+        font-size: clamp(150px, 55vw, 250px);
+
+        letter-spacing: -4px;
+
+        transform: scaleY(1.2);
+    }
+
+    .love-ve {
+        margin-top: 6px;
+    }
+    .timer {
+        max-width: 100%;
+        padding: 20px 14px;
+    }
+    .invite {
+        padding: 40px 0;
+    }
+
+    .invite-main {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .invite-big {
+        font-size: 24px;
+    }
+
+    .invite-date {
+        font-size: 24px;
+    }
+
+    .invite-image {
+        margin: 30px 0;
+    }
+
+    .timing-title {
+        font-size: 32px;
+        padding-right: 15px;
+        margin-left: 10px;
+    }
+
+    .time-big {
+        font-size: 24px;
+    }
+
+    .timing-item p {
+        font-size: 15px;
+    }
+
+    .timing-content {
+        padding-left: 15px;
+    }
+    .love-section,
+    .invite {
+        margin-top: -1px;
+    }
+      .location {
+        padding: 40px 15px;
+    }
+
+    .location-title {
+        font-size: clamp(55px, 18vw, 120px);
+        letter-spacing: -3px;
+        transform: scaleY(1.25);
+    }
+
+    .place-name {
+        font-size: 22px;
+    }
+
+    .place-address {
+        font-size: 14px;
+    }
+
+    .map-button {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+     .dress-title {
+        font-size: 32px;
+        padding-top: 70px;
+        padding-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .dress-text {
+        font-size: 18px;
+        line-height: 1.7;
+        letter-spacing: 2px;
+        padding: 0 15px;
+    }
+
+    .dress-img {
+        margin: 20px 0 50px;
+    }
+
+    .details {
+        margin-top: -30px;
+    }
+
+    .details-letter {
+        font-size: clamp(240px, 85vw, 500px);
+    }
+
+    .details-inner {
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+
+    .wedding-block {
+        margin-top: 80px;
+    }
+
+    .wedding-bg span {
+        font-size: clamp(75px, 24vw, 150px);
+    }
+
+    .wedding-img {
+        width: 55%;
+        max-width: 200px;
+    }
+    .guest-photo-wrap {
+        margin-top: 20px;
+    }
+
+    .guest-photo-text {
+        font-size: clamp(18px, 3vw, 60px);
+        left: 75%;
+        top: 15%;
+        transform: translate(-50%, -50%);
+    }
+
+}
+
+
+@media (max-width: 420px) {
+    
+    body {
+        padding: 10px;
+        overflow-x: hidden;
+    }
+    .main-card {
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+    }
+    .hero-content {
+        padding: 20px 12px;
+    }
+
+    .hero-center {
+        margin-bottom: 90px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .hero-date {
+        font-size: 16px;
+    }
+
+    .today {
+        font-size: 28px;
+        margin-right: 60px;
+    }
+
+    .hero-bottom {
+        margin-bottom: 60px;
+    }
+
+    
+    .love-text{
+        font-size: 18px;
+    }
+    .love-section {
+        
+        padding: 40px 2px 60px;
+    }
+    .love-left {
+        transform-origin: center;
+    }
+     .love-left {
+        margin-top: -75px;
+        
+        
+    }
+
+    .love-left h2 {
+        font-size: clamp(120px, 50vw, 180px);
+
+        letter-spacing: -3px;
+
+        transform: scaleY(1.15);
+
+        line-height: 0.95;
+    }
+    .love-container {
+        gap: 35px;
+    }
+    .time-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .days-box span {
+        font-size: 70px;
+    }
+    .invite {
+        padding: 30px 0;
+    }
+
+    .invite-text {
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    .invite-main {
+        font-size: 16px;
+        letter-spacing: 1.5px;
+        line-height: 1.6;
+    }
+
+    .invite-big {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+    }
+
+    .invite-date {
+        font-size: 20px;
+    }
+
+    .invite-image {
+        margin: 25px 0;
+    }
+
+    .timing-title {
+        font-size: 26px;
+        padding-right: 10px;
+        margin-left: 5px;
+    }
+
+    .timing-content {
+        padding-left: 10px;
+    }
+
+    .time-big {
+        font-size: 20px;
+    }
+
+    .timing-item p {
+        font-size: 14px;
+    }
+
+    .time-item {
+        padding: 0 10px;
+    }
+    .location-title {
+        font-size: clamp(50px, 22vw, 150px);
+        
+    }
+
+    .place-name {
+        font-size: 20px;
+    }
+
+    .place-address {
+        font-size: 13px;
+    }
+     .dress-title {
+        font-size: 24px;
+        padding-top: 50px;
+        padding-right: 15px;
+        margin-bottom: 15px;
+    }
+
+    .dress-text {
+        font-size: 14px;
+        line-height: 1.6;
+        letter-spacing: 1px;
+        padding: 0 15px;
+    }
+
+    .dress-img {
+        margin: 15px 0 40px;
+    }
+
+    .details {
+        margin-top: -20px;
+    }
+
+    .details-letter {
+        font-size: clamp(180px, 75vw, 320px);
+    }
+
+    .details-inner {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    .wedding-block {
+        margin-top: 60px;
+    }
+
+    .wedding-bg span {
+        font-size: clamp(65px, 30vw, 110px);
+        letter-spacing: -2px;
+    }
+
+    .wedding-img {
+        width: 55%;
+        max-width: 150px;
+    }
+    .guest-photo-wrap {
+        margin-top: 15px;
+    }
+
+    .guest-photo-text {
+        font-size: clamp(20px, 3vw, 40px);
+        left: 75%;
+        top: 15%;
+        transform: translate(-50%, -50%);
+        letter-spacing: -1px;
+    }
+}
+
+@media (max-width: 340px) {
+    .main-card {
+    margin: 0 auto;
+    }
+ 
+    .hero-center {
+        margin-bottom: 70px;
+    }
+    
+    .today {
+        font-size: 24px;
+        margin-right: 20px;
+    }
+  .love-left h2 {
+        font-size: 120px;
+    }
+    .timer {
+        padding: 16px 12px;
+    }
+    .love-left {
+        margin-top: -68px;
+    }
+
+    .love-left h2 {
+        font-size: clamp(100px, 45vw, 150px);
+        letter-spacing: -4px;
+        line-height: 0.94;
+        transform: scaleY(1.14);
+    }
+    .love-ve {
+        margin-top: 5px;
+    }
+    .love-text,
+    .wedding,
+    .happy {
+        font-size: 12px;
+        padding: 0 10px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        letter-spacing: 1px;
+    }
+    .invite {
+        padding: 25px 0;
+    }
+
+    .invite-main {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    .invite-big {
+        font-size: 18px;
+    }
+
+    .invite-date {
+        font-size: 18px;
+    }
+
+    .invite-image {
+        margin: 20px 0;
+    }
+
+    .timing-title {
+        font-size: 22px;
+        transform: scaleY(1.15);
+    }
+
+    .time-big {
+        font-size: 18px;
+    }
+
+    .timing-item p {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
+    .timing-content {
+        padding-left: 8px;
+    }
+    .location {
+        padding: 25px 12px;
+    }
+
+    .location-title {
+        font-size: clamp(38px, 22vw, 85px);
+        letter-spacing: -2px;
+        transform: scaleY(1.1);
+        margin-bottom: 15px;
+    }
+
+    .location-label {
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+    .place-name {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .place-address {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .location-image {
+        margin: 20px 0;
+        border-radius: 12px;
+    }
+
+    .map-button {
+        font-size: 12px;
+        padding: 10px 12px;
+        letter-spacing: 1px;
+    }
+    .dress-title {
+        font-size: 20px;
+        padding-top: 40px;
+        padding-right: 12px;
+        margin-bottom: 12px;
+    }
+
+    .dress-text {
+        font-size: 12px;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        padding: 0 12px;
+    }
+
+    .dress-img {
+        margin: 12px 0 30px;
+    }
+
+    .details {
+        margin-top: -15px;
+    }
+
+    .details-letter {
+        font-size: clamp(150px, 70vw, 260px);
+    }
+
+    .details-inner {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .wedding-block {
+        margin-top: 50px;
+    }
+
+    .wedding-bg span {
+        font-size: clamp(55px, 25vw, 100px);
+        letter-spacing: -1px;
+    }
+
+    .wedding-img {
+        width: 55%;
+        max-width: 110px;
+    }
+    .guest-photo-wrap {
+        margin-top: 10px;
+    }
+
+    .guest-photo-text {
+        font-size: 15px;
+        left: 75%;
+        top: 15%;
+        transform: translate(-50%, -50%);
+        letter-spacing: 0;
+        text-shadow: 0 3px 15px rgba(0,0,0,.5);
+    }
+}
+
+
+.quiz {
+    position: fixed;
+    inset: 0;
+    background: rgba(88, 1, 23, 0.95);
+    z-index: 99999;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    position: fixed;
+}
+.quiz-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+
+    font-size: 70px;
+    color: #e9c38a;
+    cursor: pointer;
+
+    z-index: 100000;
+}
+/* карточка вопроса */
+.step {
+    display: none;
+    width: 100%;
+    max-width: 420px;
+
+    background: rgb(212, 186, 196);
+    border-radius: 20px;
+    padding: 25px;
+
+    text-align: center;
+    font-family: 'Special Elite', monospace;
+    color: #580117;
+}
+
+/* активный вопрос */
+.step.active {
+    display: block;
+}
+
+/* заголовок */
+.step h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* инпуты */
+.step input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+
+    border: 1px solid rgb(212, 186, 196);
+    border-radius: 10px;
+
+    font-family: inherit;
+}
+
+/* кнопки */
+.step button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: #580117;
+    color: #e9c38a;
+
+    font-family: inherit;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+}
+
+/* hover */
+.step button:hover {
+    opacity: 0.9;
+}
+.error-text {
+    font-size: 22px;
+    color: #d41515;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: 'Special Elite', monospace;
+    min-height: 14px;
+}
+@media (max-width: 768px) {
+
+    .step {
+        max-width: 380px;
+        padding: 22px;
+    }
+
+    .step h2 {
+        font-size: 18px;
+    }
+
+    .step input {
+        padding: 11px;
+        font-size: 14px;
+    }
+
+    .step button {
+        padding: 11px;
+        font-size: 14px;
+    }
+
+    .quiz-close {
+        font-size: 60px;
+        top: 10px;
+        right: 15px;
+    }
+
+    .error-text {
+        font-size: 18px;
+    }
+}
+@media (max-width: 420px) {
+
+    .step {
+        max-width: 320px;
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .step h2 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .step input {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .step button {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .quiz-close {
+        font-size: 50px;
+    }
+
+    .error-text {
+        font-size: 16px;
+    }
+}
+@media (max-width: 340px) {
+
+    .step {
+        max-width: 280px;
+        padding: 15px;
+    }
+
+    .step h2 {
+        font-size: 14px;
+    }
+
+    .step input {
+        padding: 9px;
+        font-size: 12px;
+    }
+
+    .step button {
+        padding: 9px;
+        font-size: 12px;
+    }
+
+    .quiz-close {
+        font-size: 42px;
+        top: 8px;
+        right: 12px;
+    }
+
+    .error-text {
+        font-size: 14px;
+    }
+}
