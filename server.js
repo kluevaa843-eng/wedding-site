@@ -13,6 +13,7 @@ const CHAT_ID = process.env.CHAT_ID;
 
 app.post("/send", async (req, res) => {
     const data = req.body;
+
     const message = `
 Новая анкета:
 
@@ -34,7 +35,7 @@ ${data.withPartner ? `
             text: message
         });
 
-        console.log(" отправлено в Telegram");
+        console.log("✔ отправлено в Telegram");
         res.json({ ok: true });
 
     } catch (err) {
@@ -43,6 +44,9 @@ ${data.withPartner ? `
     }
 });
 
-app.listen(3000, () => {
-    console.log("Server started on http://localhost:3000");
+// ВАЖНО: правильный порт для хостинга
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log("Server started on port", PORT);
 });
